@@ -11,7 +11,8 @@ import {
   incrementAsync,
   // incrementIfOdd,
   selectCount,
-} from './productListSlice';
+} from '../productSlice';
+import { Link } from 'react-router-dom';
 // import { Fragment, useState } from 'react'
 
 const items = [
@@ -290,14 +291,7 @@ export default function ProductList() {
                 <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
                   {/* Filters */}
                   <form className="hidden lg:block">
-                    {/* <h3 className="sr-only">Categories</h3>
-                    <ul role="list" className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
-                      {subCategories.map((category) => (
-                        <li key={category.name}>
-                          <a href={category.href}>{category.name}</a>
-                        </li>
-                      ))}
-                    </ul> */}
+                    
 
                     {filters.map((section) => (
                       <Disclosure as="div" key={section.id} className="border-b border-gray-200 py-6">
@@ -350,6 +344,7 @@ export default function ProductList() {
 
                       <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                         {products.map((product) => (
+                          <Link to="/product-detail">
                           <div key={product.id} className="group relative">
                             <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                               <img
@@ -371,6 +366,7 @@ export default function ProductList() {
                               <p className="text-sm font-medium text-gray-900">{product.price}</p>
                             </div>
                           </div>
+                          </Link>
                         ))}
                       </div>
                     </div>
